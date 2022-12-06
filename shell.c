@@ -1,5 +1,8 @@
 #include "main.h"
-
+/**
+ * main - basic simple shell
+ * Return: nothing
+ */
 int main(void)
 {
 	char *args[] = {NULL, NULL};
