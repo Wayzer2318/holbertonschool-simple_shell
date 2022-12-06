@@ -2,7 +2,7 @@
 
 /**
  * errors - print errors
- * errors: the errors
+ * error: the errors
  * Return: void
  */
 void errors(int error)
