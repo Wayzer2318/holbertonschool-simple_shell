@@ -9,6 +9,7 @@ int main(void)
 	char *command = NULL;
 	ssize_t n_bytes = 0;
 	size_t command_len = 0;
+	char *str = strtok(command, " ");
 
 	while (1)
 	{
@@ -25,6 +26,11 @@ int main(void)
 		}
 		else
 			wait(NULL);
+		while (str != NULL)
+		{
+			printf("%s", str);
+			str = strtok(NULL, " ");
+		}
 	}
 	return (0);
 }
