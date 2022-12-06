@@ -21,7 +21,7 @@ int main(void)
 			dprintf(STDERR_FILENO, "%s : command not found.\n", *args);
 			exit(1);
 		}
-		else 
+		else
 			wait(NULL);
 	}
 	return (0);
