@@ -9,10 +9,19 @@ int main(void)
 
 	while(1)
 	{
-		printf("$");
+		printf("$ ");
 		n_bytes = getline(&command, &command_len, stdin);
 		command[n_bytes - 1] = '\0';
-		execve(*args, args, NULL);
+		
+		args[0] = command;
+		
+		if (fork() == 0)
+		{
+			execve(*args, args, NULL);
+			dprintf(STDERR_FILENO, "%s : command not found.\n", *args);
+			exit(1);
+		}
+		else wait(NULL);
 	}
 	return(0);
 }
