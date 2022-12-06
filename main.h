@@ -9,4 +9,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+char **split_line(char *lineptr);
+
 #endif
