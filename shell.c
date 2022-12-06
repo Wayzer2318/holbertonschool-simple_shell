@@ -1,4 +1,4 @@
-1#include "main.h"
+#include "main.h"
 /**
  * main - basic simple shell
  * Return: nothing
