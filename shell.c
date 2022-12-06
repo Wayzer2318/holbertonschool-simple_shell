@@ -9,7 +9,6 @@ int main(void)
 	char *command = NULL;
 	ssize_t n_bytes = 0;
 	size_t command_len = 0;
-	char **str;
 
 	while (1)
 	{
