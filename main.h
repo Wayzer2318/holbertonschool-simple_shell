@@ -10,5 +10,6 @@
 #include <sys/wait.h>
 
 char **split_line(char *lineptr);
+int _strcmp(char *s1, char *s2);
 
 #endif
