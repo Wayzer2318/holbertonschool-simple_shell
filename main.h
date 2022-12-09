@@ -1,15 +1,25 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-#include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <sys/types.h>
+#include <string.h>
+#include <stdlib.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <errno.h>
+#include <signal.h>
 
-char **split_line(char *lineptr);
+int exec(char **args);
+char *f_read(void);
+char **tokenize(char *line);
+void _signal(int sig);
+
+char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+int _putchar(char c);
 
 #endif

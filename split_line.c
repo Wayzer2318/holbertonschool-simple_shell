@@ -1,25 +1,37 @@
-#include "main.h"
+#include "shell.h"
 
 /**
-*split_line- split string in to tokens
-*@lineptr: input
-*Return: str, needs to be free
+ * tokenize - tokenize the line
+ * @line: line to be tokenized
+ *
+ * Return: argv pointer
 */
 
-char **split_line(char *lineptr)
+char **tokenize(char *line)
 {
-	int num = 0;
-	int capacity =  25;
-	char **str = malloc(capacity * sizeof(char *));
-	char *delim = " \n\t\r:";
+	int tok_size = 64;
+	char *token = NULL;
+	char **argv = NULL;
+	int index = 0;
 
-	str[num] = strtok(lineptr, delim);
+	argv = malloc(tok_size * sizeof(char *));
 
-	while (str[num] != NULL)
+	if (argv == NULL)
 	{
-		num++;
-		str[num] = strtok(NULL, delim);
+		perror("Error : allocation memory");
+		free(argv);
+		free(line);
+		exit(1);
 	}
+	token = strtok(line, " ");
 
-	return (str);
+	while (token != NULL)
+	{
+		argv[index] = token;
+		index++;
+		token = strtok(NULL, " ");
+	}
+	argv[index] = NULL;
+
+	return (argv);
 }

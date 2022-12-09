@@ -1,37 +1,43 @@
 #include "main.h"
 /**
- * main - basic simple shell
- * Return: nothing
- */
+ * main - starts the shell
+ *
+ * Return: 0
+*/
 int main(void)
 {
-	char *args[] = {NULL, NULL};
-	char *command = NULL;
-	ssize_t n_bytes = 0;
-	size_t command_len = 0;
-	char **str = NULL;
+	int status = 1, index, j;
+	char *line, **args = NULL;
 
-	while (1)
+	signal(SIGINT, _signal);
+	while (status)
 	{
-		printf("$ ");
-		n_bytes = getline(&command, &command_len, stdin);
-		command[n_bytes - 1] = '\0';
-
-		args[0] = command;
-		if (fork() == 0)
+		status = isatty(0);
+		if (status == 1)
+			write(1, "#kiman$ ", 9);
+		line = f_read();
+		index = 0, j = 0;
+		while (line[j] != '\0')
 		{
-			execve(*args, args, NULL);
-			dprintf(STDERR_FILENO, "%s : command not found.\n", *args);
-			exit(1);
+			if (line[index] == ' ')
+				index++;
+			j++;
 		}
-		else
-			wait(NULL);
-		str = split_line(command);
-		if (_strcmp(str[0], "exit\n") == 0)
+		if (line[index] == '\0')
 		{
-			free(str);
-			exit(EXIT_SUCCESS);
+			free(line);
+			continue;
 		}
+		args = tokenize(line);
+		if (args == NULL)
+		{
+			free(line);
+			continue;
+		}
+		if (line[0] != '\n' || line[1] != '\0')
+			status = exec(args);
+		free(args);
+		free(line);
 	}
 	return (0);
 }
