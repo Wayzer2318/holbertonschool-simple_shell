@@ -19,6 +19,10 @@ char *f_read(void)
 		free(line);
 		exit(0);
 	}
+	if (length == -1 || _strcmp(line, "env\n") == 0)
+	{
+		get_env();
+	}
 	if (line[length - 1] == '\n' && line[1] != '\0')
 	{
 		line[length - 1] = '\0';

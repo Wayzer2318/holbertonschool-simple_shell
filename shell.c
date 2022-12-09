@@ -14,7 +14,7 @@ int main(void)
 	{
 		status = isatty(0);
 		if (status == 1)
-			write(1, "#kiman$ ", 9);
+			write(1, "#hotki$ ", 9);
 		line = f_read();
 		index = 0, j = 0;
 		while (line[j] != '\0')
