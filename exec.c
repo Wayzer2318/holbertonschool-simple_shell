@@ -36,7 +36,7 @@ int exec(char **args)
 			perror("Error: no command");
 			return (0);
 		}
-		if (execve(command, args, environ) == -1)
+		if (execve(command, args, NULL) == -1)
 		{
 			perror("Error: execve");
 			return (0);

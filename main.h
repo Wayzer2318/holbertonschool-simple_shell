@@ -12,9 +12,6 @@
 #include <signal.h>
 
 int exec(char **args);
-char *get_env(char *command);
-char **split_env(char *path);
-void print_env(void);
 char *check_path(char *command);
 char *f_read(void);
 char **tokenize(char *line);

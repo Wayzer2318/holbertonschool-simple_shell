@@ -28,11 +28,6 @@ int main(void)
 			free(line);
 			continue;
 		}
-		if (strcmp(line, "env") == 0)
-		{
-			print_env(), free(line);
-			continue;
-		}
 		args = tokenize(line);
 		if (args == NULL)
 		{
