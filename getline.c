@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * f_read - function that reads the user input

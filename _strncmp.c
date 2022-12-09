@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * *_strncmp - function that compare n characters of two strings
