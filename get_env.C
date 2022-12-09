@@ -1,15 +1,13 @@
-#include "main.h"
-/**
- * 
- *
- *
- */
-int get_env(int argc, char **argv, char **envp)
-{
-  for (char **env = envp; *env != 0; env++)
-  {
-    char *thisEnv = *env;
-    printf("%s\n", thisEnv);    
+#include <stdio.h>
+
+extern char **environ;
+
+int get_env() {
+  char **s = environ;
+
+  for (; *s; s++) {
+    printf("%s\n", *s);
   }
+
   return 0;
 }
