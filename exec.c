@@ -25,7 +25,7 @@ int exec(char **args)
 			command = args[0];
 		}
 		else
-			command = check_path(args[0]);
+			perror("Eroor : no argument");
 
 		if (args[0] == NULL)
 			perror("Error : no argument");
